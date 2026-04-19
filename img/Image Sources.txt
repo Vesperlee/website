@@ -1,0 +1,4 @@
+page1background: https://opengameart.org/content/seamless-space-backgrounds
+rocket: https://web.archive.org/web/20090723123808/http://kr.geocities.com/leeiljun/bo_06.htm
+interstellarFakeAd: https://magneticdogz.neocities.org/media/graphics/web-banners
+redSparkles: https://codecreature.net/graphix/
