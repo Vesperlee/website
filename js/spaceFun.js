@@ -18,7 +18,7 @@ const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 camera.position.z = 3;
 
 const controls = new OrbitControls(camera, renderer.domElement);
-
+controls.enableDamping = true;
 // Set Object Mesh
 const loader = new THREE.TextureLoader();
 const geometry = new THREE.IcosahedronGeometry(1, 16);
@@ -76,7 +76,8 @@ renderer.render(Scene, camera);
 function animate(t=0) {
     requestAnimationFrame(animate);
     Earth.rotation.y = t / 30000;
-    cloudMesh.rotation.y = t / 31000;
+    cloudMesh.rotation.y = t / 30050;
+    controls.update();
     renderer.render(Scene, camera);
 }
 animate();
