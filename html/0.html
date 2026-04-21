@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>&lrm;</title>
+        <link rel="icon" href="../img/hollow.png">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="importmap">
+			{
+				"imports": {
+					"three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+          "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+        }
+			}
+	</script>
+    </head>
+
+    <style>
+        heart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body{
+            cursor: url('../img/nail.ico'), auto;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        img {
+            height: 300px;
+            width: 200px;
+            z-index: 1;
+            position: absolute;
+            top: 30%;
+            transition: 1.0s;
+            animation: life 1.128s linear infinite;
+        }
+
+        img:hover {
+            filter:
+            drop-shadow(-2px 2px 0px rgb(66, 66, 66))
+            drop-shadow(0 0 25px rgb(128, 0, 0));
+        }
+
+        @keyframes life {
+            0% {
+                transform: scale(1.0);
+            }
+            21.5%, 40% {
+                transform: scale(0.95) skew(1deg) rotate(1deg);
+            }
+            45%, 100% {
+                transform: scale(1.0);
+            }
+        }
+    </style>
+
+<body>
+    <heart>
+        <img class="center" src="../img/heart.png" id="soul">
+    </heart>
+    <script type="module" src="../js/heart.js"></script>
+</body>
+    <audio src="../media/heart.mp3" type="audio/mpeg" id="pulse"></audio>
+</head>
+
+<script>
+  document.getElementById('soul').addEventListener('animationiteration', () => {
+    document.getElementById('pulse').currentTime = 0;
+    document.getElementById('pulse').play().catch(error => {
+      console.log("Interaction required to play sound:", error);
+    });
+  });
+</script>
