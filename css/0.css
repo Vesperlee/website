@@ -13,7 +13,44 @@
         body {
             overflow: hidden;
             margin: 0;
+        }
+
+        .cursed {
             cursor: url('../img/0/nail.ico'), auto;
+        }
+
+        div {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image:url('../img/0/warning.png');
+            z-index: 1000;
+        }
+
+        warning {
+            text-align: center;
+            align-items: center;
+            font-size: 100px;
+            font-family: monospace;
+            font-variant: small-caps;
+            font-weight: bolder;
+        }
+
+        button {
+            font-size: 50px;
+            background: none;
+            cursor: pointer;
+            
+        }
+        .pact {
+            text-align: center;
+            align-items: center;
+            font-size: 100px;
+            font-family: monospace;
+            font-variant: small-caps;
+            font-weight: bolder;
+            left:300%;
+            z-index: 0;
         }
 
         .hesitation {
@@ -122,6 +159,7 @@
             bottom: 30%;
             z-index: 444;
         }
+
         @keyframes life {
             0% {
                 transform: scale(1.0);

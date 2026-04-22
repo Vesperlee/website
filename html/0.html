@@ -19,10 +19,19 @@
         @import "../css/0.css"; 
     </style>
 
-<body>
+<body id="we">
+    <warning class="selectDisable">
+        <div id="danger">
+            <p>
+                You should not have <br>come here
+            </p>
+            <button id="consent">ACCEPT YOUR MISTAKE</button>
+        </div>
+        
+    </warning>
     <img src="../img/hollow.png" id="darkness" class="selectDisable dark" draggable="true">
     <heart>
-        <img src="../img/0/heart.png" id="soul" class="selectDisable form alive threat" draggable="false">
+        <img src="../img/0/heart.png" id="soul" class="selectDisable form threat" draggable="false">
         <img src="../img/0/why.png" id="mistake" class="selectDisable hesitation" draggable="false">
         <img src="../img/0/regret.png" id="regret" class="selectDisable piercing" draggable="false">
         <img src="../img/0/pierced.png" id="ichor" class="selectDisable before" draggable="false">
@@ -36,12 +45,13 @@
 <script>
   document.getElementById('soul').addEventListener('animationiteration', () => {
     document.getElementById('pulse').currentTime = 0;
-    document.getElementById('pulse').play().catch(error => {
-      console.log("Interaction required to play sound:", error);
-    });
+    document.getElementById('pulse').play()
   });
 
-    window.onload = function() {
+    window.addEventListener('load', pierce);
+    window.addEventListener('load', warn);
+    
+    function pierce() {
     document.getElementById('soul').addEventListener('click', function (e) {
         document.getElementById('soul').className -= " alive threat";
         document.getElementById('mistake').className -= " hesitation";
@@ -56,4 +66,15 @@
         document.body.style.cursor = 'default';
     });
     };
+
+    function warn() {
+    document.getElementById('consent').addEventListener('click', function (e) {
+        document.getElementById('soul').className += " alive";
+        document.getElementById('we').className += " cursed";
+        document.getElementById('danger').className += " pact";
+        document.getElementById('pulse').currentTime = 0;
+        document.getElementById('pulse').play()
+    });
+    };
+
 </script>
