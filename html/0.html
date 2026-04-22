@@ -9,61 +9,28 @@
 			{
 				"imports": {
 					"three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
-          "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
-        }
+                    "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+                    }
 			}
-	</script>
+	    </script>
     </head>
 
     <style>
-        heart {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        body{
-            cursor: url('../img/nail.ico'), auto;
-            overflow: hidden;
-            margin: 0;
-        }
-
-        img {
-            height: 300px;
-            width: 200px;
-            z-index: 1;
-            position: absolute;
-            top: 30%;
-            transition: 1.0s;
-            animation: life 1.128s linear infinite;
-        }
-
-        img:hover {
-            filter:
-            drop-shadow(-2px 2px 0px rgb(66, 66, 66))
-            drop-shadow(0 0 25px rgb(128, 0, 0));
-        }
-
-        @keyframes life {
-            0% {
-                transform: scale(1.0);
-            }
-            21.5%, 40% {
-                transform: scale(0.95) skew(1deg) rotate(1deg);
-            }
-            45%, 100% {
-                transform: scale(1.0);
-            }
-        }
+        @import "../css/0.css"; 
     </style>
 
 <body>
+    <img src="../img/hollow.png" id="darkness" class="selectDisable dark" draggable="true">
     <heart>
-        <img class="center" src="../img/heart.png" id="soul">
+        <img src="../img/0/heart.png" id="soul" class="selectDisable form alive threat" draggable="false">
+        <img src="../img/0/why.png" id="mistake" class="selectDisable hesitation" draggable="false">
+        <img src="../img/0/regret.png" id="regret" class="selectDisable piercing" draggable="false">
+        <img src="../img/0/pierced.png" id="ichor" class="selectDisable before" draggable="false">
     </heart>
     <script type="module" src="../js/heart.js"></script>
 </body>
-    <audio src="../media/heart.mp3" type="audio/mpeg" id="pulse"></audio>
+    <audio src="../media/0/heart.mp3" type="audio/mpeg" id="pulse"></audio>
+    <audio src="../media/0/dead.mp3" type="audio/mpeg" id="dead"></audio>
 </head>
 
 <script>
@@ -73,4 +40,20 @@
       console.log("Interaction required to play sound:", error);
     });
   });
+
+    window.onload = function() {
+    document.getElementById('soul').addEventListener('click', function (e) {
+        document.getElementById('soul').className -= " alive threat";
+        document.getElementById('mistake').className -= " hesitation";
+        document.getElementById('regret').className -= " piercing";
+        document.getElementById('ichor').className -= " before";
+        document.getElementById('soul').className += " selectDisable killed slaughtered form";
+        document.getElementById('mistake').className += " selectDisable regret";
+        document.getElementById('darkness').className += " consume";
+        document.getElementById('regret').className += " pierced";
+        document.getElementById('ichor').className += " after";
+        document.getElementById('dead').play();
+        document.body.style.cursor = 'default';
+    });
+    };
 </script>
