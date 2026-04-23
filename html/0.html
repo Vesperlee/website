@@ -20,18 +20,17 @@
     </style>
 
 <body id="we">
-    <warning class="selectDisable">
+    <warning class="selectDisable" onload="loadOtherContent()">
         <div id="danger">
             <p>
                 You should not have <br>come here
             </p>
             <button id="consent">ACCEPT YOUR MISTAKE</button>
         </div>
-        
     </warning>
     <img src="../img/hollow.png" id="darkness" class="selectDisable dark" draggable="true">
     <heart>
-        <img src="../img/0/heart.png" id="soul" class="selectDisable form threat" draggable="false">
+        <img src="../img/0/heart.png" id="soul" class="selectDisable form threat dormant" draggable="false">
         <img src="../img/0/why.png" id="mistake" class="selectDisable hesitation" draggable="false">
         <img src="../img/0/regret.png" id="regret" class="selectDisable piercing" draggable="false">
         <img src="../img/0/pierced.png" id="ichor" class="selectDisable before" draggable="false">
@@ -43,13 +42,16 @@
 </head>
 
 <script>
-  document.getElementById('soul').addEventListener('animationiteration', () => {
+    const loadOtherContent = () => {
+    document.getElementById("we").innerHTML = "...";
+    }
+    document.getElementById('soul').addEventListener('animationiteration', () => {
     document.getElementById('pulse').currentTime = 0;
     document.getElementById('pulse').play()
   });
 
-    window.addEventListener('load', pierce);
     window.addEventListener('load', warn);
+    window.addEventListener('load', pierce);
     
     function pierce() {
     document.getElementById('soul').addEventListener('click', function (e) {

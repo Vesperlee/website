@@ -13,6 +13,7 @@
         body {
             overflow: hidden;
             margin: 0;
+            background-image: url('../img/0/warning.png');
         }
 
         .cursed {
@@ -51,6 +52,10 @@
             font-weight: bolder;
             left:300%;
             z-index: 0;
+        }
+
+        .dormant {
+            opacity: 0%;
         }
 
         .hesitation {
@@ -123,6 +128,7 @@
         }
 
         .alive {
+            opacity: 100%;
             animation: life 1.128s linear infinite;
         }
 
