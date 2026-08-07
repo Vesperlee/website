@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NUS UTown AirCon Cost Calculator</title>
+</head>
+
+<style>
+    input {
+        display: block;
+        width: 15vh;
+        height: 2.5vh;
+        margin-top: 10px;
+    }
+
+    label {
+        display: block;
+        font-size: 3vh;
+    }
+
+    button {
+        margin: 15px;
+        width: 20vh;
+        height: 5vh;
+        font-size: 3vh;
+        border-radius: 10px;
+    }
+
+    .Blocks {
+        justify-items: center;
+        text-align: center;
+        border-radius: 10px;
+        width: 20%;
+        height: 10vh;
+        margin: 15px;
+        opacity: 50%;
+        transition: 0.3s
+    }
+
+    .Blocks:hover {
+        transition: 0.3s;
+        opacity: 100%;
+    }
+
+</style>
+
+<script src="../js/airConCalculator.js"></script>
+
+<body>
+
+<div>
+    <u style="font-size:7.5vh;">
+        <a href="https://cp2nus.evs.com.sg">cp2nus.evs.com.sg</a>
+        Estimated cost calculator
+    </u>
+</div>
+<div class="Blocks" style="background-color: orangered;">
+    <label style="justify-content: center;">
+        Temperature
+        <input type="number" min="16" max="31" id="temperature">
+    </label>
+</div>
+<div class="Blocks" style="background-color: cornflowerblue;">
+    <label>
+        Fan Speed
+        <input type="number" min="1" max="3" id="fanSpeed">
+    </label>
+</div>
+<div class="Blocks" style="background-color: darkorange;">
+    <label>
+        Hours
+        <input type="number" min="0" id="hours">
+    </label>
+</div>
+
+<button type="button" onclick="totalCost()">Submit</button>
+
+<div style="font-size:10vh; margin:15px;">
+    <output id="output">$0.00</output>
+</div>
+<div style="font-size:2.5vh;">
+    To Do:
+    <ul>
+        <li>Improve website look</li>
+        <li>Further enhance calculation accuracy</li>
+        <li>Find general average for auto fan speed</li>
+        <li>Add dynamic graph(?)</li>
+        <li>Factor in local temperature</li>
+    </ul>
+</div>
+<div>
+
+</div>
+</body>
+</html>
