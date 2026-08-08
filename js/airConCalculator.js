@@ -2,20 +2,11 @@
 // 15 < x < 31 && 0 < y < 4
 // Temperature range imposes a flat cost.
 function tempCost(x) {
-    if (x >= 28 && x <= 30) {
-        return (0.045);
-    }
-    else if (x >= 25 && x <= 27) {
-        return (0.05);
-    }
-    else if (x >= 21 && x <= 24) {
-        return (0.055);
-    }
-    else if (x >= 16 && x <= 20) {
-        return (0.06);
+    if (x >= 16 && x <= 30) {
+        return (0.0633515874 - 0.001356096978 * x) / (0.786807568 - 0.009353131686 * x);
     }
     else {
-        alert("Invalid temperature value (value should range between 16 to 30)")
+        alert("Invalid temperature value (value should range between 16 to 30)");
         return false;
     }
 }
@@ -25,11 +16,11 @@ function fanCost(x, y) {
     if (y === 1) {
         return 0;
     }
-    else if (y === 2) {
-        return 0.01;
+    else if (y === 2) { // Possible slightly more at lower temperatures... (directly proportional)
+        return 0.01; // To be confirmed, but accurate for 27/25C.
     }
     else if (y === 3) {
-        return false;
+        return 0.03; // PLACEHOLDER, replace with more accurate number
     }
     else {
         alert("Invalid fan speed value (value should range between 1 to 3)")
@@ -42,9 +33,8 @@ function totalCost() {
     let temp = Number(document.getElementById("temperature").value);
     let fan = Number(document.getElementById("fanSpeed").value);
     let hours = Number(document.getElementById("hours").value);
-    let costString1 = `${(tempCost(temp) + fanCost(temp, fan)).toFixed(2)}`;
+    let costString1 = `${((tempCost(temp) + fanCost(temp, fan))*0.95).toFixed(3)}`;
     let costString2 = `${(4 * hours * (tempCost(temp) + fanCost(temp, fan))).toFixed(2)}`
-    let output = "$" + costString2 + " or " + "$" + costString1 + " every 15mins.";
     document.getElementById('output')
-        .innerText = output;
+        .innerText = "$" + costString2 + " or " + "$" + costString1 + " every 15mins.";
 }
